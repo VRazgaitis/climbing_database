@@ -2,12 +2,12 @@ import csv
 import sqlite3
 
 def process_csv_routes(path):
-    with sqlite3.connect('MyClimb.db') as conn:
+    with sqlite3.connect('Database/MyClimb.db') as conn:
 
         cursor = conn.cursor()
 
         insert_query = '''
-        INSERT INTO Routes (RouteName, Location, URL, AVG_STARS, RouteType, Rating)
+        INSERT INTO Routes (RouteName, Location, URL, AVG_STARS, RouteType, Difficulty_Rating)
         VALUES (?, ?, ?, ?, ?, ?);
         '''
 
@@ -15,11 +15,11 @@ def process_csv_routes(path):
             routeDictionary = csv.DictReader(file)
             for row in routeDictionary:
                 cursor.execute(insert_query, 
-                               (int(row['RouteName']), 
+                                (row['RouteName'], 
                                 row['Location'], 
                                 row['URL'], 
-                                float(row['AVG_STARS']), 
-                                row['RouteType'], 
-                                row['Difficulty_Rating'].split()[0]))  # clean out extra chars for danger tags
+                                float(row['Avg Stars']), 
+                                row['Route Type'], 
+                                row['Rating'].split()[0]))  # clean out extra chars for danger tags
 
 process_csv_routes('Data/Routes.csv')

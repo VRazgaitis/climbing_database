@@ -37,5 +37,20 @@ def rating_cleanup(filepath):
         for line in csv_file:
             print(line[5].split()[0])
 
+def check_unique_names(filepath):
+    """
+    Console prints duplicate route names
+    """
+    routes = []
+    with open(filepath, mode='r') as file:
+        csv_file = csv.reader(file)
+        next(csv_file)
+        for line in csv_file:
+            if line[0] not in routes:
+                routes.append(line[0])
+            else:
+                print(f'{line[0]} is a duplicate at {line[1]}')
+
 # find_max_lengths('Data/Routes.csv')
 # rating_cleanup('Data/Routes.csv')
+check_unique_names('Data/Routes.csv')
