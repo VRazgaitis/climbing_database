@@ -20,6 +20,6 @@ def process_csv_routes(path):
                                 row['URL'], 
                                 float(row['AVG_STARS']), 
                                 row['RouteType'], 
-                                row['Difficulty_Rating']))
+                                row['Difficulty_Rating'].split()[0]))  # clean out extra chars for danger tags
 
-process_csv_routes('Data/routes.csv')
+process_csv_routes('Data/Routes.csv')
