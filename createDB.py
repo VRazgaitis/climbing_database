@@ -3,9 +3,9 @@ import sqlite3
 
 def create_my_climb(file_path, db_path='Database/MyClimb.db'):
     with sqlite3.connect(db_path) as conn:
-        with open(file_path, 'r') as sql_hotel:
-            hotel_script = sql_hotel.read()
-        conn.executescript(hotel_script)
+        with open(file_path, 'r') as create_tables:
+            create_climb_tables = create_tables.read()
+        conn.executescript(create_climb_tables)
         conn.commit()
 
-create_my_climb('Database/MyClimb.sql')
+create_my_climb('Database/create_MyClimb_tables.sql')
