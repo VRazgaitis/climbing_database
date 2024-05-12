@@ -14,6 +14,8 @@ def find_max_lengths(filepath):
         max_route_name = 0
         max_location = 0
         max_url = 0
+        max_lat = 0
+        max_long = 0
         for line in csv_file:
             if len(line[0]) > max_route_name:
                 max_route_name = len(line[0])
@@ -23,9 +25,14 @@ def find_max_lengths(filepath):
                 max_loc = line[1]
             if len(line[2]) > max_url:
                 max_url = len(line[2])
+            if len(line[9]) > max_lat:
+                max_lat = len(line[9])
+            if len(line[10]) > max_long:
+                max_long = len(line[10])
         print(f'\nRoute Name max length: {max_route_name}; \n"{max_name}"\n')
         print(f'Location max chars: {max_location}; \n"{max_loc}"')
         print(f'Max URL: {max_url}')
+        print(f'Max lat, long: {max_lat, max_long}')
 
 def rating_cleanup(filepath):
     """
@@ -49,8 +56,8 @@ def check_unique_names(filepath):
             if line[0] not in routes:
                 routes.append(line[0])
             else:
-                print(f'{line[0]} is a duplicate at {line[1]}')
+                print(f'DUPLICATE ROUTENAME: {line[0]}; 2ND LOCATION: {line[1]}')
 
-# find_max_lengths('Data/Routes.csv')
+# find_max_lengths('Data/kentucky_routes.csv')
 # rating_cleanup('Data/Routes.csv')
 check_unique_names('Data/Routes.csv')

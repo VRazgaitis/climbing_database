@@ -7,19 +7,21 @@ def process_csv_routes(path):
         cursor = conn.cursor()
 
         insert_query = '''
-        INSERT INTO Routes (RouteName, Location, URL, AVG_STARS, RouteType, Difficulty_Rating)
-        VALUES (?, ?, ?, ?, ?, ?);
+        INSERT INTO Routes (RouteName, Location, URL, AVG_STARS, RouteType, Difficulty_Rating, Latitude, Longitude)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?);
         '''
 
         with open(path, 'r') as file:
             routeDictionary = csv.DictReader(file)
             for row in routeDictionary:
                 cursor.execute(insert_query, 
-                                (row['RouteName'], 
+                                (row['Route'], 
                                 row['Location'], 
                                 row['URL'], 
                                 float(row['Avg Stars']), 
                                 row['Route Type'], 
-                                row['Rating'].split()[0]))  # clean out extra chars for danger tags
+                                row['Rating'].split()[0],
+                                float(row['Area Latitude']),
+                                float(row['Area Longitude'])))  # clean out extra chars for danger tags
 
-process_csv_routes('Data/Routes.csv')
+process_csv_routes('Data/kentucky_routes.csv')
