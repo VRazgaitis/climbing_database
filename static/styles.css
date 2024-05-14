@@ -1,1 +1,18 @@
 /* TODO: Implement Styles for the Page */
+.query {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .query > p {
+    display: block;
+    flex: 1 1 30%;
+    padding: 8px;
+    margin: 4px;
+    color: white;
+    text-shadow: 0 1px 1px darkslateblue;
+    border-radius: 4px;
+    background-color: gray;
+    box-shadow: 0 4px 8px lightcyan;
+    text-align: center;
+  }

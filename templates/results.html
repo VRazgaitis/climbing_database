@@ -1,12 +1,62 @@
 {% extends 'layout.html' %}
 
 {% block body %}
-    <h1> Query Results </h1>
-        {% if type == 'query1' %}
+    <h1> Query Results </h1>        
+    <div class="query">
+        {% if type == 'query1' %} 
             {% for row in rows %}
-            <p>
-                {{ row['RouteName'] }}
-            </p>
-            {% endfor %}
+                <p>
+                    {{ row['RouteName'] }}
+                </p>
+            {% endfor %}  
+        {% elif type == 'query2' %} 
+            {% for row in rows %}
+                <p>
+                    ...
+                </p>
+            {% endfor %}       
+        {% elif type == 'query3' %} 
+            {% for row in rows %}
+                <p>
+                    {{ row['RouteName'] }}
+                </p>
+            {% endfor %}  
+        {% elif type == 'query4' %} 
+            {% for row in rows %}
+                <p>
+                    ...
+                </p>
+            {% endfor %}    
+        {% elif type == 'query5' %} 
+            {% for row in rows %}
+                <p>
+                    ...
+                </p>
+            {% endfor %}       
+        {% elif type == 'query6' %} 
+            {% for row in rows %}
+                <p>
+                    {{ row['RouteName'] }}
+                </p>
+            {% endfor %}  
+        {% elif type == 'query6' %} 
+            {% for row in rows %}
+                <p>
+                    ...
+                </p>
+            {% endfor %} 
+        {% elif type == 'query7' %} 
+            {% for row in rows %}
+                <p>
+                    {{ row['RouteName'] }}
+                </p>
+            {% endfor %}  
+        {% elif type == 'query8' %} 
+            {% for row in rows %}
+                <p>
+                    ...
+                </p>
+            {% endfor %} 
         {% endif %}
+    </div>
 {% endblock %}
