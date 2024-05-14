@@ -2,9 +2,11 @@
 
 {% block body %}
     <h1> Query Results </h1>
-        {% for row in rows %}
-        <p>
-            {{ row }}
-        </p>
-        {% endfor %}
+        {% if type == 'query1' %}
+            {% for row in rows %}
+            <p>
+                {{ row['RouteName'] }}
+            </p>
+            {% endfor %}
+        {% endif %}
 {% endblock %}

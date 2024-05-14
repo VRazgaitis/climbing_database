@@ -53,10 +53,14 @@ def submit_query():
     Handle the form submission for queries.
     '''
     query_type = request.form['queryType']
+    print(query_type)
     # TODO: Implement the query logic based on query_type
-    rows = None
+    
+    if query_type == 'query1':
+        rows = query_db('SELECT * FROM Routes WHERE AVG_STARS > 3.0')
 
-    return render_template('results.html', query_type=query_type, rows=rows)
+
+    return render_template('results.html', query_type=query_type, type=query_type, rows=rows)
 
 @app.route('/api/relation/<string:table_name>')
 def relation(table_name):
