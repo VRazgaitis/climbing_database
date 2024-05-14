@@ -6,7 +6,7 @@ import csv
 
 def find_max_lengths(filepath):
     """
-    Console prints the longest char route name and location name from Routes.csv
+    Console prints the longest char route name and location name from a csv containing routes data
     """
     with open(filepath, mode='r') as file:
         csv_file = csv.reader(file)
@@ -36,7 +36,9 @@ def find_max_lengths(filepath):
 
 def rating_cleanup(filepath):
     """
-    Confirms data cleaning 
+    Confirms data cleaning on Rating attribute.
+    5.9+ PG13 is a rating string that conatins both difficulty (5.9+) and danger (PG13)
+    Our dataset should contain only difficulty and not danger
     """
     with open(filepath, mode='r') as file:
         csv_file = csv.reader(file)
@@ -46,7 +48,7 @@ def rating_cleanup(filepath):
 
 def check_unique_names(filepath):
     """
-    Console prints duplicate route names
+    Console prints duplicate route names in csv files
     """
     routes = []
     with open(filepath, mode='r') as file:
@@ -60,4 +62,4 @@ def check_unique_names(filepath):
 
 # find_max_lengths('Data/kentucky_routes.csv')
 # rating_cleanup('Data/Routes.csv')
-check_unique_names('Data/Routes.csv')
+# check_unique_names('Data/Routes.csv')
