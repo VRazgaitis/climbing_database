@@ -1,1 +1,1 @@
-/* TODO: Implement any backend js */
+/* TODO: Implement backend for Custom Query, style using a grid */

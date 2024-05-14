@@ -47,7 +47,7 @@ def index():
     '''
     return render_template('index.html')
 
-@app.route('/api/submit-query', methods=['POST'])
+@app.route('/api/submit-query')
 def submit_query():
     '''
     Handle the form submission for queries.
@@ -70,6 +70,20 @@ def relation(table_name):
     rows = query_db(f'SELECT * FROM {table_name}')
     
     return render_template('relation.html', type=table_name, rows=rows)
+
+@app.route('/user-query')
+def custom():
+    '''
+    Display the page custom query page.
+    '''
+    return render_template('custom.html')
+
+@app.route('/api/user-query')
+def user_query():
+    '''
+    Return json object which includes information for a custom query.
+    '''
+    pass
 
 if __name__ == '__main__':
     app.run(debug=True)
