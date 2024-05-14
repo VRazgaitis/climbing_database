@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+    <h1>This is the relations page.</h1>
+    <div class="records">
+        {% if type == 'Routes' %}
+        {% for row in rows %}
+        <div class="record">
+            <p>RouteName: {{ row['RouteName'] }}</p>
+            <p>RouteType: {{ row['RouteType'] }}</p>
+            <p>AVG_STARS: {{ row['AVG_STARS'] }}</p>
+            <p>Difficulty_Rating: {{ row['Difficulty_Rating'] }}</p>
+            <p>Latitude: {{ row['Latitude'] }}</p>
+            <p>Location: {{ row['Location'] }}</p>
+            <p>Longitude: {{ row['Longitude'] }}</p>
+            <p>URL: <a href="{{ row['URL'] }}">{{ row['URL'] }}</a></p>
+        </div>
+        {% endfor %}
+        {% elif type == 'Developer' %}
+        <p>Developer Information</p>
+        {% elif type == 'Equipment' %}
+        <p>Equipment Information</p>
+        {% elif type == 'Region' %}
+        <p>Region Information</p>
+        {% elif type == 'Climber' %}
+        <p>Climber Information</p>
+        {% endif %}
+    </div>
+{% endblock %}

@@ -1,14 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Results Page</title>   
-    <link rel="stylesheet" type="text/css" href="/static/style.css"></link> 
-    <script src="../static/scripts.js"></script>
-</head>
-<body>
+{% extends 'layout.html' %}
 
-    
-</body>
-</html>
+{% block body %}
+    <h1> Query Results </h1>
+        {% for row in rows %}
+        <p>
+            {{ row }}
+        </p>
+        {% endfor %}
+{% endblock %}
