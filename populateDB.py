@@ -20,8 +20,9 @@ def process_csv_routes(path):
                                 row['URL'], 
                                 float(row['Avg Stars']), 
                                 row['Route Type'], 
-                                row['Rating'].split()[0],
+                                row['Rating'].split()[0], # clean out extra chars for danger tags
                                 float(row['Area Latitude']),
-                                float(row['Area Longitude'])))  # clean out extra chars for danger tags
+                                float(row['Area Longitude'])))  
 
-process_csv_routes('Data/kentucky_routes.csv')
+process_csv_routes('Data/zion_routes.csv')
+
