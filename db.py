@@ -8,4 +8,4 @@ def create_my_climb(file_path, db_path='Database/MyClimb.db'):
         conn.executescript(create_climb_tables)
         conn.commit()
 
-create_my_climb('Database/create_MyClimb_tables.sql')
+create_my_climb('Database/schema.sql')
