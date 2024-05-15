@@ -47,7 +47,7 @@ def index():
     '''
     return render_template('index.html')
 
-@app.route('/api/submit-query')
+@app.route('/api/submit-query', methods=['POST'])
 def submit_query():
     '''
     Handle the form submission for queries.
@@ -57,10 +57,9 @@ def submit_query():
     # TODO: Implement the query logic based on query_type
     
     if query_type == 'query1':
-        rows = query_db('SELECT * FROM Routes WHERE AVG_STARS > 3.0')
+        rows = query_db('SELECT * FROM Routes WHERE AVG_STARS > 4.5')
 
-
-    return render_template('results.html', query_type=query_type, type=query_type, rows=rows)
+    return render_template('results.html', type=query_type, rows=rows)
 
 @app.route('/api/relation/<string:table_name>')
 def relation(table_name):
