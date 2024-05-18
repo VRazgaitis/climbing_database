@@ -47,6 +47,19 @@ def index():
     '''
     return render_template('index.html')
 
+@app.route('/api/submit-ratings-query', methods=['POST'])
+def submit_ratings_query():
+    '''
+    Handle the form submission for interactive ranking query
+    '''
+    query_type = request.form['queryType']
+    print(query_type)
+    # TODO: Implement the query logic based on query_type
+
+    querystr = 'SELECT * FROM Routes WHERE AVG_STARS < {} ORDER BY AVG_STARS DESC'.format(query_type)
+    rows = query_db(querystr)
+    return render_template('results.html', type=query_type, rows=rows)
+
 @app.route('/api/submit-query', methods=['POST'])
 def submit_query():
     '''
