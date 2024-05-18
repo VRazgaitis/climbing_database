@@ -58,6 +58,12 @@
                     ...
                 </p>
             {% endfor %} 
+        {% elif type.isdecimal %} 
+            {% for row in rows %}
+                <p>
+                    {{ row['RouteName'], row['AVG_STARS'] }}
+                </p>
+            {% endfor %} 
         {% endif %}
     </div>
 {% endblock %}
