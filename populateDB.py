@@ -41,6 +41,54 @@ def process_csv_climbers(path):
                 cursor.execute(insert_query, 
                                 (row['Name'], row['DOB']))  
                 
+def process_csv_route_developers(path):
+    """
+    Processes route developers into the DB
+    """
+    with sqlite3.connect('Database/MyClimb.db') as conn:
+        cursor = conn.cursor()
+        insert_query = '''
+        INSERT INTO Developed_Routes (DeveloperName, RouteName, DateDeveloped)
+        VALUES (?, ?, ?);
+        '''
+        with open(path, 'r') as file:
+            developerDictionary = csv.DictReader(file)
+            for row in developerDictionary:
+                cursor.execute(insert_query, 
+                                (row['Setter Name'], row['Route Name'], row['Date Climbed']))  
+                
+def process_csv_gear(path):
+    """
+    Processes climbing gear into the DB
+    """
+    with sqlite3.connect('Database/MyClimb.db') as conn:
+        cursor = conn.cursor()
+        insert_query = '''
+        INSERT INTO Climbing_equipment (ProductName, Brand, Weight, URL)
+        VALUES (?, ?, ?, ?);
+        '''
+        with open(path, 'r') as file:
+            gearDictionary = csv.DictReader(file)
+            for row in gearDictionary:
+                cursor.execute(insert_query, 
+                                (row['Product Name'], row['Brand'], row['Weight (oz)'], row['URL']))  
+                
+def process_csv_eq_used(path):
+    """
+    Processes equipment used into the DB
+    """
+    with sqlite3.connect('Database/MyClimb.db') as conn:
+        cursor = conn.cursor()
+        insert_query = '''
+        INSERT INTO Equipment_used (ProductName, RouteName)
+        VALUES (?, ?);
+        '''
+        with open(path, 'r') as file:
+            gearDictionary = csv.DictReader(file)
+            for row in gearDictionary:
+                cursor.execute(insert_query, 
+                                (row['Gear'], row['Route']))  
+                
 def process_csv_ticklist(climber_name, path):
     """
     Processes individual climbers' ticklists into the DB
@@ -81,4 +129,3 @@ def write_ticks():
         filepath = 'Data/ticklists/'+ticklist
         climber_name = ' '.join(ticklist.split('_')[:2]).title()
         process_csv_ticklist(climber_name, filepath)
-
