@@ -77,16 +77,27 @@ def list_filenames(directory):
         print(f"An error occurred: {e}")
         return []
 
-# find_max_lengths('Data/kentucky_routes.csv')
-# rating_cleanup('Data/Routes.csv')
-# check_unique_names('Data/Routes.csv')
+def max_notes_length():
+    """
+    Prints the longest note length, note, from all climber ticklists in the Data/ticklists folder
+    """
+    directory_path = 'Data/ticklists'
+    file_list = list_filenames(directory_path)
+    max_note = 0
+    for ticklist in file_list:
+        print(f"\n{' '.join(ticklist.split('_')[:2]).title()} Climbs:")  # pull climber's {Fname Lname} from fname_lname_ticklist.csv  
+        with open(directory_path + '/' + ticklist, mode='r') as file:
+            csv_file = csv.reader(file)
+            next(csv_file)
+            for line in csv_file:
+                if len(line[3]) > max_note:
+                    text_string = line[3]
+                    max_note = len(line[3]) 
+                print(line[1])
+    print(max_note, text_string)
 
-directory_path = 'Data/Climbers'
-file_list = list_filenames(directory_path)
-for ticklist in file_list:
-    print(f"\n{' '.join(ticklist.split('_')[:2]).title()} Climbs:")
-    with open(directory_path + '/' + ticklist, mode='r') as file:
-        csv_file = csv.reader(file)
-        next(csv_file)
-        for line in csv_file:
-            print(line[1])
+def extract_name(ticklist):
+    """
+    pull climber's {Fname Lname} from fname_lname_ticklist.csv
+    """
+    print(f"\n{' '.join(ticklist.split('_')[:2]).title()} Climbs:")  
