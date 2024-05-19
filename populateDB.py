@@ -24,5 +24,6 @@ def process_csv_routes(path):
                                 float(row['Area Latitude']),
                                 float(row['Area Longitude'])))  
 
-process_csv_routes('Data/zion_routes.csv')
+for climb_area in ['Data/Routes/red_rocks_routes.csv']:
+    process_csv_routes(climb_area)
 

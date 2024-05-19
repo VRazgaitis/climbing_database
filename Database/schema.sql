@@ -1,5 +1,4 @@
 DROP TABLE IF EXISTS Routes;
-
 CREATE TABLE Routes (
     RouteName VARCHAR(70),
     Location VARCHAR(200) NOT NULL,

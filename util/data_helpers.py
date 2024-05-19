@@ -3,6 +3,7 @@
 # By VR
 
 import csv 
+import os
 
 def find_max_lengths(filepath):
     """
@@ -60,6 +61,32 @@ def check_unique_names(filepath):
             else:
                 print(f'DUPLICATE ROUTENAME: {line[0]}; 2ND LOCATION: {line[1]}')
 
+def list_filenames(directory):
+    """
+    Lists all filenames in a specified directory
+    Used for batch writting data into DB
+    """
+    try:
+        # Get a list of all files and directories in specified directory
+        items = os.listdir(directory)
+        # Filter out directories, keeping only files
+        filenames = [item for item in items if os.path.isfile(os.path.join(directory, item))]
+        return filenames
+    
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        return []
+
 # find_max_lengths('Data/kentucky_routes.csv')
 # rating_cleanup('Data/Routes.csv')
 # check_unique_names('Data/Routes.csv')
+
+directory_path = 'Data/Climbers'
+file_list = list_filenames(directory_path)
+for ticklist in file_list:
+    print(f"\n{' '.join(ticklist.split('_')[:2]).title()} Climbs:")
+    with open(directory_path + '/' + ticklist, mode='r') as file:
+        csv_file = csv.reader(file)
+        next(csv_file)
+        for line in csv_file:
+            print(line[1])
