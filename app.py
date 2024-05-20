@@ -53,10 +53,11 @@ def submit_ratings_query():
     Handle the form submission for interactive ranking query
     '''
     query_type = request.form['queryType']
-    print(query_type)
+    query_relation = request.form['queryRelation']
+    print(query_type, query_relation)
     # TODO: Implement the query logic based on query_type
 
-    querystr = 'SELECT * FROM Routes WHERE AVG_STARS < {} ORDER BY AVG_STARS DESC'.format(query_type)
+    querystr = 'SELECT * FROM Routes WHERE AVG_STARS {} {} ORDER BY AVG_STARS DESC'.format(query_relation, query_type)
     rows = query_db(querystr)
     return render_template('results.html', type=query_type, rows=rows)
 

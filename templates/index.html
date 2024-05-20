@@ -14,7 +14,12 @@
     <!-- TODO: Implement a GUI that allows for User Input -->
 
     <form action="{{ url_for('submit_ratings_query') }}" method="POST">
-        <label for="querySelect">List of routes with rating below </label>
+        <label for="querySelect">List of routes with rating</label>
+        <select name="queryRelation" id="queryRelation">
+            <option value=">">Above</option>
+            <option value="=">Equal to</option>
+            <option value="&lt;">Below</option>
+        </select>
         <select name="queryType" id="querySelect">
             <option value="3.0">3.0</option>
             <option value="4.0">4.0</option>
