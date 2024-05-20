@@ -101,3 +101,12 @@ def extract_name(ticklist):
     pull climber's {Fname Lname} from fname_lname_ticklist.csv
     """
     print(f"\n{' '.join(ticklist.split('_')[:2]).title()} Climbs:")  
+
+def extract_state(path):
+    """
+    extract the region out of the location string
+    """
+    with open(path, 'r') as file:
+        tickDictionary = csv.DictReader(file)
+        for row in tickDictionary:
+            print(row['Location'].split('>')[-1])

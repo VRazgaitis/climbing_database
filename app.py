@@ -78,7 +78,11 @@ def submit_query():
             rows = query_db('''SELECT * FROM Routes AS R 
                             INNER JOIN Equipment_used AS E on R.RouteName = E.RouteName
                             WHERE E.ProductName = "Climbing Helmet"''')
-
+        case 'query4':
+            rows = query_db('''SELECT T."ClimberName", R."RouteName", R."Difficulty_Rating", R."URL" 
+                            FROM "Ticks" T JOIN Routes R ON R."RouteName" = T."RouteName" 
+                            ORDER BY "Difficulty" desc LIMIT 1''')
+            
     return render_template('results.html', type=query_type, rows=rows)
 
 @app.route('/api/relation/<string:table_name>')

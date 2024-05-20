@@ -33,18 +33,19 @@
     <form action="{{ url_for('submit_query') }}" method="POST">
         <label for="querySelect">Choose a query:</label>
         <select name="queryType" id="querySelect">
-            <!-- Validate Queries, then translate them into actual SQL Queries in app.py in the 
-                /api/submit-query  -->
+            <!-- Completed queries in app.py: -->
             <option value="query1">Which routes, by name and difficulty rating, are under 5.11 difficulty rating</option>
             <option value="query2">Routes, by average stars and URL, which require a climbing helmet </option>
-            <!-- 
-            <option value="query3">What are the 3 most popular (most ascent) granite climbs in South America</option>
             <option value="query4">Which climber has climbed the most difficult route in the United States? </option>
-            <option value="query5">Which routes have been established by a Route Developer who has been setting routes for more than 6 years and are easier than 5.7 difficulty? </option>
+            <!-- Queries ready to be written: -->
+            <!-- <option value="query3">What are the 3 highest rated granite climbs in North America</option> -->
+
+            <!-- Working queries: -->
+            <!-- <option value="query5">Which routes have been established by a Route Developer who has been setting routes for more than 6 years and are easier than 5.7 difficulty? </option>
             <option value="query6">What was the first route established in North America?</option>
             <option value="query7">Give me a list of all retired (> 65 Y.O.) climbers who have climbed in Yosemite in the last two weeks  </option>
-            <option value="query8">List all routes at the Red River Gorge sorted by difficulty.</option>
-            -->
+            <option value="query8">List all routes at the Red River Gorge sorted by difficulty.</option> -->
+           
         </select>
         <button type="submit">Submit Query</button>
     </form>

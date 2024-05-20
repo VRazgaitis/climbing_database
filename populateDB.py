@@ -1,6 +1,7 @@
 import csv
 import sqlite3
 from util import data_helpers
+import uuid
 
 def convert_YDS_to_int(yds_grade):
     """
@@ -105,8 +106,8 @@ def process_csv_routes(path):
     with sqlite3.connect('Database/MyClimb.db') as conn:
         cursor = conn.cursor()
         insert_query = '''
-        INSERT INTO Routes (RouteName, Location, URL, AVG_STARS, RouteType, Difficulty_Rating, Difficulty, Latitude, Longitude)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
+        INSERT INTO Routes (RouteName, Location, Region, URL, AVG_STARS, RouteType, Difficulty_Rating, Difficulty, Latitude, Longitude)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
         '''
         with open(path, 'r') as file:
             routeDictionary = csv.DictReader(file)
@@ -114,6 +115,7 @@ def process_csv_routes(path):
                 cursor.execute(insert_query, 
                                 (row['Route'], 
                                 row['Location'], 
+                                row['Location'].split('>')[-1], # get the state portion of the location string
                                 row['URL'], 
                                 float(row['Avg Stars']), 
                                 row['Route Type'], 
@@ -185,6 +187,38 @@ def process_csv_eq_used(path):
             for row in gearDictionary:
                 cursor.execute(insert_query, 
                                 (row['Gear'], row['Route']))  
+                
+def process_regions(path):
+    """
+    Processes climbing regions into the DB
+    """
+    with sqlite3.connect('Database/MyClimb.db') as conn:
+        cursor = conn.cursor()
+        insert_query = '''
+        INSERT INTO Regions (Region, Country, Continent)
+        VALUES (?, ?, ?);
+        '''
+        with open(path, 'r') as file:
+            reader = csv.DictReader(file)
+            for row in reader:
+                cursor.execute(insert_query, 
+                                (row['Region'], row['Country'], row['Continent']))  
+                
+def process_common_geologies(path):
+    """
+    Processes common geologies into the DB
+    """
+    with sqlite3.connect('Database/MyClimb.db') as conn:
+        cursor = conn.cursor()
+        insert_query = '''
+        INSERT INTO Common_geologies (Region, MainGeology)
+        VALUES (?, ?);
+        '''
+        with open(path, 'r') as file:
+            reader = csv.DictReader(file)
+            for row in reader:
+                cursor.execute(insert_query, 
+                                (row['Region'], row['Rock Type']))  
                 
 def process_csv_ticklist(climber_name, path):
     """
