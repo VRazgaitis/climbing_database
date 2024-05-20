@@ -81,7 +81,7 @@ def submit_query():
         case 'query3':
             rows = query_db('''SELECT * FROM Routes AS R
                             INNER JOIN "Common_geologies" AS C on R.Region = C.Region
-                            WHERE C.MainGeology = "Granite" AND C.Region 
+                            WHERE C.MainGeology = "Granite"
                             ORDER BY AVG_STARS DESC
                             LIMIT 3''')
         case 'query4':
