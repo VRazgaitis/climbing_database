@@ -13,18 +13,27 @@
 
     <!-- TODO: Implement a GUI that allows for User Input -->
 
+    <form action="{{ url_for('submit_ratings_query') }}" method="POST">
+        <label for="querySelect">List of routes with rating below </label>
+        <select name="queryType" id="querySelect">
+            <option value="3.0">3.0</option>
+            <option value="4.0">4.0</option>
+            <option value="5.0">5.0</option>
+        </select>
+        <button type="submit">Submit Query</button>
+    </form>
+
     <form action="{{ url_for('submit_query') }}" method="POST">
         <label for="querySelect">Choose a query:</label>
         <select name="queryType" id="querySelect">
-            <option value="query1">List the names of routes with a rating above 3.9.</option>
-            <option value="query2">Which routes at Joshua Tree are at most as hard as 5.10a difficulty </option>
-            <option value="query3">Which routes are at most 5 years old and require sport clips? </option>
-            <option value="query4">What are the 3 most popular (most ascent) granite climbs in South America</option>
-            <option value="query5">Which climber has climbed the most difficult route in the United States? </option>
-            <option value="query6">Which routes have been established by a Route Developer who has been setting routes for more than 6 years and are easier than 5.7 difficulty? </option>
-            <option value="query7">What was the first route established in North America?</option>
-            <option value="query8">Give me a list of all retired (> 65 Y.O.) climbers who have climbed in Yosemite in the last two weeks  </option>
-            <option value="query9">List all routes at the Red River Gorge sorted by difficulty.</option>
+            <option value="query1">Which routes at Joshua Tree are at most as hard as 5.10a difficulty </option>
+            <option value="query2">Which routes are at most 5 years old and require sport clips? </option>
+            <option value="query3">What are the 3 most popular (most ascent) granite climbs in South America</option>
+            <option value="query4">Which climber has climbed the most difficult route in the United States? </option>
+            <option value="query5">Which routes have been established by a Route Developer who has been setting routes for more than 6 years and are easier than 5.7 difficulty? </option>
+            <option value="query6">What was the first route established in North America?</option>
+            <option value="query7">Give me a list of all retired (> 65 Y.O.) climbers who have climbed in Yosemite in the last two weeks  </option>
+            <option value="query8">List all routes at the Red River Gorge sorted by difficulty.</option>
         </select>
         <button type="submit">Submit Query</button>
     </form>
