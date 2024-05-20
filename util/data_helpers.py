@@ -109,4 +109,4 @@ def extract_state(path):
     with open(path, 'r') as file:
         tickDictionary = csv.DictReader(file)
         for row in tickDictionary:
-            print(row['Location'].split('>')[-1])
+            print(row['Location'].split(' > ')[-1])

@@ -115,7 +115,7 @@ def process_csv_routes(path):
                 cursor.execute(insert_query, 
                                 (row['Route'], 
                                 row['Location'], 
-                                row['Location'].split('>')[-1], # get the state portion of the location string
+                                row['Location'].split(' > ')[-1], # get the state portion of the location string
                                 row['URL'], 
                                 float(row['Avg Stars']), 
                                 row['Route Type'], 
@@ -259,3 +259,5 @@ def write_ticks():
         filepath = 'Data/ticklists/'+ticklist
         climber_name = ' '.join(ticklist.split('_')[:2]).title()
         process_csv_ticklist(climber_name, filepath)
+
+write_routes()
