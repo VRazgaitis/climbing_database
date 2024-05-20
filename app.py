@@ -91,6 +91,12 @@ def submit_query():
             rows = query_db('''SELECT URL, RouteName, Difficulty_Rating, Region, MAX("AVG_STARS") AS HighestRating
                                FROM Routes WHERE "Difficulty_Rating" LIKE '5.10%'
                                GROUP BY Region''')
+        case 'query8':
+            rows = query_db('''SELECT * FROM "Routes" 
+                            WHERE "Location" LIKE '%Red River Gorge%' 
+                            AND Difficulty_Rating LIKE '5.10%' 
+                            AND Location LIKE '%Chocolate Factory%' 
+                            ORDER BY "Difficulty" desc''')
             
     return render_template('results.html', type=query_type, rows=rows)
 
