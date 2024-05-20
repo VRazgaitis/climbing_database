@@ -1,5 +1,6 @@
 from flask import *
 import sqlite3
+import populateDB
 
 # Initialize the App
 app = Flask(__name__)
@@ -70,8 +71,13 @@ def submit_query():
     print(query_type)
     # TODO: Implement the query logic based on query_type
     
-    if query_type == 'query1':
-        rows = query_db('SELECT * FROM Routes WHERE AVG_STARS > 3.9 ORDER BY AVG_STARS desc LIMIT 100')
+    match query_type:
+        case 'query1':
+            rows = query_db('SELECT * FROM Routes WHERE Difficulty < {}'.format(populateDB.convert_YDS_to_int('5.11')))
+        case 'query2':
+            rows = query_db('''SELECT * FROM Routes AS R 
+                            INNER JOIN Equipment_used AS E on R.RouteName = E.RouteName
+                            WHERE E.ProductName = "Climbing Helmet"''')
 
     return render_template('results.html', type=query_type, rows=rows)
 

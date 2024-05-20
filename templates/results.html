@@ -7,13 +7,13 @@
         {% if type == 'query1' %} 
             {% for row in rows %}
                 <p>
-                    {{ row['RouteName'] }}
+                    {{ row['RouteName'], row['Difficulty_Rating']}}
                 </p>
             {% endfor %}  
         {% elif type == 'query2' %} 
             {% for row in rows %}
                 <p>
-                    ...
+                    {{ row['AVG_STARS'], row['URL'] }}
                 </p>
             {% endfor %}       
         {% elif type == 'query3' %} 
