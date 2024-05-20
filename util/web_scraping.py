@@ -31,7 +31,7 @@ def scrape_MP_route_img(route_url):
             if not img_url:
                 continue
             route_image_urls.append(img_url)
-    if not route_image_urls:  # add a placeholder if image scrape failed
+    if not route_image_urls:  # add a stock photo if image scrape failed
         route_image_urls.append('https://cdn.climbing.com/wp-content/uploads/2016/03/burr102411-024jpg-1024x683.jpg?width=1200')
     return route_image_urls
 
