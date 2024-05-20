@@ -78,15 +78,19 @@ def submit_query():
             rows = query_db('''SELECT * FROM Routes AS R 
                             INNER JOIN Equipment_used AS E on R.RouteName = E.RouteName
                             WHERE E.ProductName = "Climbing Helmet"''')
-        case 'query3':
-            rows = query_db('''SELECT R."RouteName", R.Location, G."MainGeology", R."AVG_STARS" 
-                            FROM "Routes" R JOIN "Common_geologies" G ON G."Region" = R."Region" 
-                            WHERE G."MainGeology" LIKE "%Sandstone" 
-                            ORDER BY "AVG_STARS" desc LIMIT 5''')
         case 'query4':
             rows = query_db('''SELECT T."ClimberName", R."RouteName", R."Difficulty_Rating", R."URL" 
                             FROM "Ticks" T JOIN Routes R ON R."RouteName" = T."RouteName" 
                             ORDER BY "Difficulty" desc LIMIT 1''')
+        case 'query5':
+            rows = query_db('''SELECT R."RouteName", R.Location, G."MainGeology", R."AVG_STARS" 
+                            FROM "Routes" R JOIN "Common_geologies" G ON G."Region" = R."Region" 
+                            WHERE G."MainGeology" LIKE "%Sandstone" 
+                            ORDER BY "AVG_STARS" desc LIMIT 5''')
+        case 'query6':
+            rows = query_db('''SELECT URL, RouteName, Difficulty_Rating, Region, MAX("AVG_STARS") AS HighestRating
+                               FROM Routes WHERE "Difficulty_Rating" LIKE '5.10%'
+                               GROUP BY Region''')
             
     return render_template('results.html', type=query_type, rows=rows)
 

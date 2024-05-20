@@ -28,7 +28,7 @@ def scrape_MP_route_img(route_url):
 
 if __name__ == "__main__":
     ### EXAMPLE USAGE ###
-    mp_route_url = sql_queries.get_route_url("Apollo Reed")
+    mp_route_url = sql_queries.get_route_url("Salathé Wall")
     route_img_url = scrape_MP_route_img(mp_route_url)
     if route_img_url:
         webbrowser.open(route_img_url)
