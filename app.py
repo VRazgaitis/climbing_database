@@ -52,7 +52,7 @@ def submit_ratings_query():
     '''
     Handle the form submission for interactive ranking query
     '''
-    query_type = request.form['queryType']
+    query_type = request.form['queryDecimal']
     query_relation = request.form['queryRelation']
     print(query_type, query_relation)
     # TODO: Implement the query logic based on query_type
