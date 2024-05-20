@@ -2,6 +2,102 @@ import csv
 import sqlite3
 from util import data_helpers
 
+def convert_YDS_to_int(yds_grade):
+    """
+    Accepts a climbing route difficulty in Yosemite Decimal System (YDS) and converts it 
+    to int for SQL comparison
+    """
+    climbing_grades = {
+        "5.1": 1,
+        "5.1+": 1,
+        "5.1-": 1,
+        "5.2": 2,
+        "5.2+": 2,
+        "5.2-": 2,
+        "5.3": 3,
+        "5.3+": 3,
+        "5.3-": 3,
+        "5.4": 4,
+        "5.4+": 4,
+        "5.4-": 4,
+        "5.5": 5,
+        "5.5+": 5,
+        "5.5-": 5,
+        "5.6": 6,
+        "5.6+": 6,
+        "5.6-": 6,
+        "5.7": 7,
+        "5.7+": 7,
+        "5.7-": 7,
+        "5.8": 8,
+        "5.8+": 8,
+        "5.8-": 8,
+        "5.9": 9,
+        "5.9+": 9,
+        "5.9-": 9,
+        "5.10": 10,
+        "5.10+": 10,
+        "5.10-": 10,
+        "5.10a": 10,
+        "5.10a/b": 11,
+        "5.10b": 12,
+        "5.10b/c": 13,
+        "5.10c": 14,
+        "5.10c/d": 15,
+        "5.10d": 16,
+        "5.11": 17,
+        "5.11+": 18,
+        "5.11-": 17,
+        "5.11a": 17,
+        "5.11a/b": 19,
+        "5.11b": 20,
+        "5.11b/c": 21,
+        "5.11c": 22,
+        "5.11c/d": 23,
+        "5.11d": 24,
+        "5.12": 25,
+        "5.12+": 26,
+        "5.12-": 25,
+        "5.12a": 25,
+        "5.12a/b": 27,
+        "5.12b": 28,
+        "5.12b/c": 29,
+        "5.12c": 30,
+        "5.12c/d": 31,
+        "5.12d": 32,
+        "5.13": 33,
+        "5.13+": 34,
+        "5.13-": 33,
+        "5.13a": 33,
+        "5.13a/b": 35,
+        "5.13b": 36,
+        "5.13b/c": 37,
+        "5.13c": 38,
+        "5.13c/d": 39,
+        "5.13d": 40,
+        "5.14": 41,
+        "5.14+": 42,
+        "5.14-": 41,
+        "5.14a": 41,
+        "5.14a/b": 43,
+        "5.14b": 44,
+        "5.14b/c": 45,
+        "5.14c": 46,
+        "5.14c/d": 47,
+        "5.14d": 48,
+        "5.15": 49,
+        "5.15+": 50,
+        "5.15-": 49,
+        "5.15a": 49,
+        "5.15a/b": 51,
+        "5.15b": 52,
+        "5.15b/c": 53,
+        "5.15c": 54,
+        "5.15c/d": 55,
+        "5.15d": 56
+    }
+    return climbing_grades[yds_grade]
+
 def process_csv_routes(path):
     """
     Processes route entries into the DB
@@ -9,8 +105,8 @@ def process_csv_routes(path):
     with sqlite3.connect('Database/MyClimb.db') as conn:
         cursor = conn.cursor()
         insert_query = '''
-        INSERT INTO Routes (RouteName, Location, URL, AVG_STARS, RouteType, Difficulty_Rating, Latitude, Longitude)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?);
+        INSERT INTO Routes (RouteName, Location, URL, AVG_STARS, RouteType, Difficulty_Rating, Difficulty, Latitude, Longitude)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
         '''
         with open(path, 'r') as file:
             routeDictionary = csv.DictReader(file)
@@ -22,6 +118,7 @@ def process_csv_routes(path):
                                 float(row['Avg Stars']), 
                                 row['Route Type'], 
                                 row['Rating'].split()[0], # clean out extra chars for danger tags
+                                convert_YDS_to_int(row['Rating'].split()[0]),
                                 float(row['Area Latitude']),
                                 float(row['Area Longitude'])))  
                 
@@ -117,7 +214,6 @@ def write_routes():
     """
     route_lists = data_helpers.list_filenames('Data/routes')
     for climbing_location in route_lists:
-        print(climbing_location)
         process_csv_routes('Data/Routes/'+climbing_location)
 
 def write_ticks():
@@ -129,3 +225,5 @@ def write_ticks():
         filepath = 'Data/ticklists/'+ticklist
         climber_name = ' '.join(ticklist.split('_')[:2]).title()
         process_csv_ticklist(climber_name, filepath)
+
+write_routes()
