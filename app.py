@@ -1,4 +1,4 @@
-from flask import Flask, g, render_template, request
+from flask import *
 import sqlite3
 
 # Initialize the App
@@ -57,7 +57,7 @@ def submit_query():
     # TODO: Implement the query logic based on query_type
     
     if query_type == 'query1':
-        rows = query_db('SELECT * FROM Routes WHERE AVG_STARS > 4.5')
+        rows = query_db('SELECT * FROM Routes WHERE AVG_STARS > 3.9 ORDER BY AVG_STARS desc LIMIT 100')
 
     return render_template('results.html', type=query_type, rows=rows)
 
