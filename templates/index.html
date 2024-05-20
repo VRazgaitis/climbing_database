@@ -4,7 +4,7 @@
 <div class="container">
     <h1>Rock Climbing Database Query</h1>
     <div class="relation-container">
-        {% for relation in ['Routes', 'Region', 'Climber', 'Equipment', 'Developer'] %}
+        {% for relation in ['Routes', 'Regions', 'Climbers'] %}
         <form action="{{ url_for('relation', table_name=relation) }}" method="GET">
             <button type="submit">{{ relation }}</button>
         </form>
@@ -51,10 +51,6 @@
     </form>
 
 </div>
-
-<form action="{{url_for('custom')}}" method="GET">
-    <button type="submit">Generate Customized Query</button>
-</form>
 
 <script src="{{ url_for('static', filename='scripts.js') }}"></script>
 {% endblock %}
