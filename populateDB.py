@@ -225,5 +225,3 @@ def write_ticks():
         filepath = 'Data/ticklists/'+ticklist
         climber_name = ' '.join(ticklist.split('_')[:2]).title()
         process_csv_ticklist(climber_name, filepath)
-
-write_routes()
