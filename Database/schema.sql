@@ -1,5 +1,6 @@
 DROP TABLE IF EXISTS Routes;
 CREATE TABLE Routes (
+    RouteId INTEGER PRIMARY KEY AUTOINCREMENT,
     RouteName VARCHAR(70),
     Location VARCHAR(200) NOT NULL,
     Region VARCHAR(50) NOT NULL,
@@ -9,8 +10,7 @@ CREATE TABLE Routes (
     Difficulty_Rating VARCHAR(10),
     Difficulty INTEGER NOT NULL,
     Latitude Decimal(7,5),
-    Longitude Decimal(7,5),
-    PRIMARY KEY(RouteName, Latitude)
+    Longitude Decimal(7,5)
 );
 -- CREATE TABLE Climbers (
 --     ClimberId INTEGER PRIMARY KEY AUTOINCREMENT,
