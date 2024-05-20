@@ -1,0 +1,19 @@
+Everybody: Read submission rubric
+
+PDF:  https://uchicagoedu-my.sharepoint.com/personal/mstrimaitis_uchicago_edu/_layouts/15/doc.aspx?sourcedoc={bff67007-1c33-4164-9ddf-bb519f5a76f8}&action=edit
+
+Submit ONE PDF file to the folder titled Step 3 under Assignments tab, structured as follows:
+● On the second page, provide a description of the idea/topic along with the requirements/specifications your database
+addresses (this can be the version you submitted in step1 or an updated version).
+● On the third page, the final version of the ER diagram along with the modifications/adjustments you made (if any)
+● On the fourth page, the final version of the relational schema along with the modifications/adjustments you made (if any)
+● On the fifth page, information about the data sets you used (this can be what you submitted in step2 or an updated
+version):
+a. The source(s) of your data sets (e.g., We will use the Energy Consumption Dataset provided by Kaggle, and here is the
+URL: http://...).
+b. The relations (tables) and attributes covered with such real dataset(s)
+● On the following page(s), for each query, copy the SQL query you developed and take a clear screenshot(s) of the output
+(the result of running it).
+B. Check the due date. Since this is the last step of the final project, the grace period is 1 hour after the due date for your
+submission to be graded out of 50% of the assignment’s grade for the team. After this period, your late submission will not
+be accepted.
