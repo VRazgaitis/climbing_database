@@ -39,4 +39,4 @@ if __name__ == "__main__":
     ### EXAMPLE USAGE ###
     mp_route_url = sql_queries.get_route_url("Coffindaffer's Dream")
     route_img_urls = scrape_MP_route_img(mp_route_url)
-    webbrowser.open(route_img_urls[0])
+    webbrowser.open(route_img_urls[0])  # variable number of img url's depending on the MP page
