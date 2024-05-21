@@ -3,39 +3,30 @@
 {% block body %}
     <div class="records">
         {% if type == 'Routes' %}
-        <h1>Routes</h1>
         {% for row in rows %}
-        <div class="record">
+        <div class="record card">
             <hr class="dashed">
-            <p>RouteName: {{ row['RouteName'] }}</p>
-            <p>RouteType: {{ row['RouteType'] }}</p>
-            <p>AVG_STARS: {{ row['AVG_STARS'] }}</p>
-            <p>Difficulty_Rating: {{ row['Difficulty_Rating'] }}</p>
-            <p>Latitude: {{ row['Latitude'] }}</p>
-            <p>Location: {{ row['Location'] }}</p>
-            <p>Longitude: {{ row['Longitude'] }}</p>
-            <p>URL: <a href="{{ row['URL'] }}">{{ row['URL'] }}</a></p>
-            <p></p>
+            <p><strong>RouteName:</strong> {{ row['RouteName'] }}</p>
+            <p><strong>RouteType:</strong> {{ row['RouteType'] }}</p>
+            <p><strong>AVG_STARS:</strong> {{ row['AVG_STARS'] }}</p>
+            <p><strong>Difficulty_Rating:</strong> {{ row['Difficulty_Rating'] }}</p>
+            <p><strong>Geo Location:</strong> {{ row['Latitude'] }} : {{ row['Longitude'] }}</p>
+            <p><strong>URL:</strong> <a href="{{ row['URL'] }}">URL</a></p>
         </div>
         {% endfor %}
         {% elif type == 'Regions' %}
-        <h1>Regions</h1>
         {% for row in rows %}
-        <div class="record">
-            <hr class="dashed">
-            <p>Region: {{ row['Region'] }}</p>
-            <p>Country: {{ row['Country'] }}</p>
-            <p>Continent: {{ row['Continent'] }}</p>
+        <div class="record card">
+            <p><strong>Region:</strong> {{ row['Region'] }}</p>
+            <p><strong>Country:</strong> {{ row['Country'] }}</p>
+            <p><strong>Continent:</strong> {{ row['Continent'] }}</p>
         </div>
         {% endfor %}
         {% elif type == 'Climbers' %}
-        <h1>Climbers</h1>
         {% for row in rows %}
-        <div class="record">
-            <hr class="dashed">
-            <p>Name: {{ row['ClimberName'] }}</p>
-            <p>Date of Birth: {{ row['DOB'] }}</p>
-            <p></p>
+        <div class="record card">
+            <p><strong>Name:</strong> {{ row['ClimberName'] }}</p>
+            <p><strong>Date of Birth:</strong> {{ row['DOB'] }}</p>
         </div>
         {% endfor %}
         {% endif %}
