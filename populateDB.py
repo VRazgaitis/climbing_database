@@ -1,6 +1,6 @@
 import csv
 import sqlite3
-from util import data_helpers
+from util import data_helpers, web_scraping
 
 def convert_YDS_to_int(yds_grade):
     """
@@ -105,8 +105,8 @@ def process_csv_routes(path):
     with sqlite3.connect('Database/MyClimb.db') as conn:
         cursor = conn.cursor()
         insert_query = '''
-        INSERT INTO Routes (RouteName, Location, Region, URL, AVG_STARS, RouteType, Difficulty_Rating, Difficulty, Latitude, Longitude)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+        INSERT INTO Routes (RouteName, Location, Region, MP_URL, img_URL, AVG_STARS, RouteType, Difficulty_Rating, Difficulty, Latitude, Longitude)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
         '''
         with open(path, 'r') as file:
             routeDictionary = csv.DictReader(file)
@@ -115,7 +115,8 @@ def process_csv_routes(path):
                                 (row['Route'], 
                                 row['Location'], 
                                 row['Location'].split(' > ')[-1], # get the state portion of the location string
-                                row['URL'], 
+                                row['URL'],
+                                web_scraping.scrape_MP_route_img(row['URL'])[0], 
                                 float(row['Avg Stars']), 
                                 row['Route Type'], 
                                 row['Rating'].split()[0], # clean out extra chars for danger tags
@@ -258,3 +259,4 @@ def write_ticks():
         filepath = 'Data/ticklists/'+ticklist
         climber_name = ' '.join(ticklist.split('_')[:2]).title()
         process_csv_ticklist(climber_name, filepath)
+

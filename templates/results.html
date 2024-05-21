@@ -15,7 +15,7 @@
             {% for row in rows %}
                 <div class="record card">
                     <p><strong>AVG_STARS:</strong> {{ row['AVG_STARS'] }}</p>
-                    <p><a href="{{ row['URL'] }}">MountainProject Page</a></p>
+                    <p><a href="{{ row['MP_URL'] }}">MountainProject Page</a></p>
                 </div>
             {% endfor %}
 
@@ -28,7 +28,7 @@
                     <p><strong>AVG_STARS:</strong> {{ row['AVG_STARS'] }}</p>
                     <p><strong>Difficulty_Rating:</strong> {{ row['Difficulty_Rating'] }}</p>
                     <p><strong>Geo Location:</strong> {{ row['Location'] }}</p>
-                    <p><a href="{{ row['URL'] }}">MountainProject Page</a></p>
+                    <p><a href="{{ row['MP_URL'] }}">MountainProject Page</a></p>
                 </div>
             {% endfor %}
 
@@ -48,7 +48,7 @@
                     <p><strong>AVG_STARS:</strong> {{ row['AVG_STARS'] }}</p>
                     <p><strong>Difficulty_Rating:</strong> {{ row['Difficulty_Rating'] }}</p>
                     <p><strong>Rock Type:</strong> {{ row['MainGeology'] }}</p>
-                    <p><a href="{{ row['URL'] }}">MountainProject Page</a></p>
+                    <p><a href="{{ row['MP_URL'] }}">MountainProject Page</a></p>
                 </div>
             {% endfor %}
 
@@ -61,14 +61,15 @@
                     <p><strong>AVG_STARS:</strong> {{ row['AVG_STARS'] }}</p>
                     <p><strong>Difficulty_Rating:</strong> {{ row['Difficulty_Rating'] }}</p>
                     <p><strong>Location:</strong> {{ row['Location'] }}</p>
-                    <p>URL: <a href="{{ row['URL'] }}">MountainProject Page</a></p>
+                    <p>URL: <a href="{{ row['MP_URL'] }}">MountainProject Page</a></p>
                 </div>
             {% endfor %}
 
         {% elif type == 'query7' %}
             {% for row in rows %}
                 <div class="record card">
-                    <p>...</p>
+                    <p><strong>Climber Name:</strong> {{ row['ClimberName'] }}</p>
+                    <p><strong>Birthdate:</strong> {{ row['DOB'] }}</p>
                 </div>
             {% endfor %}
 
@@ -82,7 +83,7 @@
                     <p><strong>AVG_STARS:</strong> {{ row['AVG_STARS'] }}</p>
                     <p><strong>Difficulty_Rating:</strong> {{ row['Difficulty_Rating'] }}</p>
                     <p><strong>Geo Location:</strong> {{ row['Latitude'] }} : {{ row['Longitude'] }}</p>
-                    <p>URL: <a href="{{ row['URL'] }}">MountainProject Page</a></p>
+                    <p>URL: <a href="{{ row['MP_URL'] }}">MountainProject Page</a></p>
                 </div>
             {% endfor %}
 
@@ -94,7 +95,7 @@
                     <p><strong>Route Type:</strong> {{ row['RouteType'] }}</p>
                     <p><strong>AVG_STARS:</strong> {{ row['AVG_STARS'] }}</p>
                     <p><strong>Geo Location:</strong> {{ row['Latitude'] }} : {{ row['Longitude'] }}</p>
-                    <p><a href="{{ row['URL'] }}">MountainProject Page</a></p>
+                    <p><a href="{{ row['MP_URL'] }}">MountainProject Page</a></p>
                 </div>
             {% endfor %}
         {% endif %}

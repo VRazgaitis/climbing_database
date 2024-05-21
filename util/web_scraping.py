@@ -1,8 +1,34 @@
-import sql_queries
 import re
 import webbrowser
 import requests
 from lxml import html, etree
+import sqlite3
+
+def get_route_url(routename):
+    """
+    Makes a query to the database, to retrieve the URL of the Mountain Project (MP) page for the 
+    specified climbing route.
+
+    ***WARNING***
+    No error checking on unsuccessful DB queries
+
+    Args:
+    - routename (string): the name of a climbing route from the Routes schema in the database.
+
+    Returns:
+    - string: A URL of the specified Route's MP page
+    """
+    conn = sqlite3.connect(database='Database/MyClimb.db')
+    cur = conn.cursor()
+    query='''
+    SELECT URL 
+    FROM Routes 
+    WHERE RouteName= ? 
+    '''
+    cur.execute(query, (routename,))
+    route_url = cur.fetchall()[0][0]
+    conn.close()
+    return route_url
 
 def scrape_MP_route_img(route_url):
     """
@@ -37,6 +63,6 @@ def scrape_MP_route_img(route_url):
 
 if __name__ == "__main__":
     ### EXAMPLE USAGE ###
-    mp_route_url = sql_queries.get_route_url("Coffindaffer's Dream")
+    mp_route_url = get_route_url("Coffindaffer's Dream")
     route_img_urls = scrape_MP_route_img(mp_route_url)
     webbrowser.open(route_img_urls[0])  # variable number of img url's depending on the MP page
