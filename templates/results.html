@@ -68,7 +68,8 @@
         {% elif type == 'query7' %}
             {% for row in rows %}
                 <div class="record card">
-                    <p>...</p>
+                    <p><strong>Climber Name:</strong> {{ row['ClimberName'] }}</p>
+                    <p><strong>Birthdate:</strong> {{ row['DOB'] }}</p>
                 </div>
             {% endfor %}
 
