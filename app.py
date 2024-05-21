@@ -69,14 +69,13 @@ def submit_query():
     '''
     query_type = request.form['queryType']
     print(query_type)
-    # TODO: Implement the query logic based on query_type
     
     match query_type:
         case 'query1':
             rows = query_db('''SELECT R.RouteName, R.Difficulty_Rating FROM Routes R
                             WHERE Difficulty < {}'''.format(populateDB.convert_YDS_to_int('5.11')))
         case 'query2':
-            rows = query_db('''SELECT R.AVG_STARS, R.URL FROM Routes AS R 
+            rows = query_db('''SELECT R.AVG_STARS, R.MP_URL FROM Routes AS R 
                             INNER JOIN Equipment_used AS E on R.RouteName = E.RouteName
                             WHERE E.ProductName = "Climbing Helmet"''')
         case 'query3':
@@ -96,7 +95,7 @@ def submit_query():
                             WHERE G."MainGeology" LIKE "%Sandstone" 
                             ORDER BY Location desc LIMIT 5''')
         case 'query6':
-            rows = query_db('''SELECT URL, RouteName, Difficulty_Rating, Region, MAX("AVG_STARS") AS HighestRating
+            rows = query_db('''SELECT MP_URL, RouteName, Difficulty_Rating, Region, MAX("AVG_STARS") AS HighestRating
                                FROM Routes WHERE "Difficulty_Rating" LIKE '5.10a%'
                                GROUP BY Region''')
         case 'query7':

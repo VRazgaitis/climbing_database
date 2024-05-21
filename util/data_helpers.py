@@ -4,6 +4,7 @@
 
 import csv 
 import os
+from util import web_scraping
 
 def find_max_lengths(filepath):
     """
@@ -110,3 +111,12 @@ def extract_state(path):
         tickDictionary = csv.DictReader(file)
         for row in tickDictionary:
             print(row['Location'].split(' > ')[-1])
+
+def scraper_demo():
+    directory_path = 'Data/Routes/RRG_nc.csv'
+    with open(directory_path, mode='r') as file:
+        csv_file = csv.reader(file)
+        next(csv_file)
+        for line in csv_file:
+            img=web_scraping.scrape_MP_route_img(line[2])[0]
+            print(img)

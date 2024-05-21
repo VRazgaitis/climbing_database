@@ -31,8 +31,9 @@
     
         <form action="{{ url_for('submit_query') }}" method="POST" id="select-query">
             <label for="querySelect">Choose a complex query:</label>
-            <select name="queryType" id="querySelect">
+            <div id="querySelect">
                 <!-- Completed queries in app.py: -->
+<<<<<<< HEAD
                 <option value="query1">Which routes, by name and difficulty rating, are under 5.11 difficulty rating?
                 </option>
                 <option value="query2">Routes, by average stars and URL, which require a climbing helmet </option>
@@ -43,11 +44,51 @@
                 <option value="query6">What is the highest rated 5.10 (any subdifficulty) climb in each region? </option>
                 <option value="query8">What are the 5.10 climbs at the 'Chocolate Factory' area in the Red River Gorge, ordered by increasing difficulty?</option>
                 <option value="query7">List climbers who have climbed in the Red River Gorge in the last two years, sorted by descending age.</option>
+=======
+                <div class="radio-option">
+                    <input type="radio" id="query1" name="queryType" value="query1">
+                    <label for="query1">Which routes, by name and difficulty rating, are under 5.11 difficulty rating?</label>
+                </div>
+>>>>>>> 680703f63a20833bbf6b5572c787490f2b36ac23
                 
-    
-            </select>
+                <div class="radio-option">
+                    <input type="radio" id="query2" name="queryType" value="query2">
+                    <label for="query2">Routes, by average stars and URL, which require a climbing helmet</label>
+                </div>
+                
+                <div class="radio-option">
+                    <input type="radio" id="query3" name="queryType" value="query3">
+                    <label for="query3">What are the 3 highest rated Granite climbs in North America?</label>
+                </div>
+                
+                <div class="radio-option">
+                    <input type="radio" id="query4" name="queryType" value="query4">
+                    <label for="query4">Which climber by name has climbed the most difficult route in the United States?</label>
+                </div>
+                
+                <div class="radio-option">
+                    <input type="radio" id="query5" name="queryType" value="query5">
+                    <label for="query5">What are the top 5 climbs by rating on Sandstone (any type)?</label>
+                </div>
+                
+                <div class="radio-option">
+                    <input type="radio" id="query6" name="queryType" value="query6">
+                    <label for="query6">What is the highest rated 5.10 (any subdifficulty) climb in each region?</label>
+                </div>
+                
+                <div class="radio-option">
+                    <input type="radio" id="query7" name="queryType" value="query7">
+                    <label for="query7">List climbers who have climbed in the Red River Gorge in the last two years, sorted by descending age.</label>
+                </div>
+                
+                <div class="radio-option">
+                    <input type="radio" id="query8" name="queryType" value="query8">
+                    <label for="query8">What are the 5.10a climbs at the 'Chocolate Factory' area in the Red River Gorge, ordered by increasing difficulty?</label>
+                </div>
+            </div>
             <button type="submit">Submit Complex Query</button>
         </form>
+        
     
     </div>
     
