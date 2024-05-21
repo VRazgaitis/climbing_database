@@ -18,15 +18,17 @@
             {% endfor %}       
         {% elif type == 'query3' %} 
             {% for row in rows %}
+            <div class="record-container">
                 <div class="record">
                     <hr class="dashed">
-                    <p>RouteName: {{ row['RouteName'] }}</p>
+                    <p class="route-name">{{ row['RouteName'] }}</p>
                     <p>RouteType: {{ row['RouteType'] }}</p>
                     <p>AVG_STARS: {{ row['AVG_STARS'] }}</p>
                     <p>Difficulty_Rating: {{ row['Difficulty_Rating'] }}</p>
                     <p>Location: {{ row['Location'] }}</p>
-                    <p>URL: <a href="{{ row['URL'] }}">{{ row['URL'] }}</a></p>
+                    <p><a href="{{ row['URL'] }}">MountainProject Page</a></p>
                 </div>
+            </div>
             {% endfor %} 
         {% elif type == 'query4' %} 
             {% for row in rows %}
@@ -36,20 +38,28 @@
         {% endfor %}  
         {% elif type == 'query5' %} 
             {% for row in rows %}
-                <p>
-                    <p>{{ row['RouteName'], row['MainGeology'], row['AVG_STARS'] }}</p>
-                </p>
+                <div class="record">
+                    <hr class="dashed">
+                    <p class="route-name">{{ row['RouteName'] }}</p>
+                    <p>RouteType: {{ row['RouteType'] }}</p>
+                    <p>Quality: {{ row['AVG_STARS'] }}</p>
+                    <p>Difficulty_Rating: {{ row['Difficulty_Rating'] }}</p>
+                    <p>Rock Type: {{ row['MainGeology'] }}</p>
+                    <p><a href="{{ row['URL'] }}">MountainProject Page</a></p>
+                </div>
             {% endfor %}       
         {% elif type == 'query6' %} 
             {% for row in rows %}
+            <div class="record-container"></div>
             <div class="record">
                 <hr class="dashed">
-                <p>RouteName: {{ row['RouteName'] }}</p>
+                <p class="route-name">RouteName: {{ row['RouteName'] }}</p>
                 <p>RouteType: {{ row['RouteType'] }}</p>
                 <p>AVG_STARS: {{ row['AVG_STARS'] }}</p>
                 <p>Difficulty_Rating: {{ row['Difficulty_Rating'] }}</p>
                 <p>Location: {{ row['Location'] }}</p>
                 <p>URL: <a href="{{ row['URL'] }}">{{ row['URL'] }}</a></p>
+            </div>
             </div>
             {% endfor %}  
 
@@ -61,14 +71,16 @@
             {% endfor %}  
         {% elif type == 'query8' %} 
             {% for row in rows %}
+            <div class="record-container"></div>
                 <div class="record">
                     <hr class="dashed">
-                    <p>RouteName: {{ row['RouteName'] }}</p>
+                    <p class="route-name">RouteName: {{ row['RouteName'] }}</p>
                     <p>Difficulty_Rating: {{ row['Difficulty_Rating'] }}</p>
                     <p>Region: {{ row['Region'] }}</p>
                     <p>AVG_STARS: {{ row['AVG_STARS'] }}</p>
                     <p>Location: {{ row['Location'] }}</p>
                     <p>URL: <a href="{{ row['URL'] }}">{{ row['URL'] }}</a></p>
+                </div>
                 </div>
             {% endfor %} 
         {% elif type.isdecimal %} 
