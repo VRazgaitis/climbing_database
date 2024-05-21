@@ -23,8 +23,8 @@
                     <hr class="dashed">
                     <p class="route-name">{{ row['RouteName'] }}</p>
                     <p>RouteType: {{ row['RouteType'] }}</p>
-                    <p>AVG_STARS: {{ row['AVG_STARS'] }}</p>
-                    <p>Difficulty_Rating: {{ row['Difficulty_Rating'] }}</p>
+                    <p>Quality: {{ row['AVG_STARS'] }}</p>
+                    <p>Difficulty: {{ row['Difficulty_Rating'] }}</p>
                     <p>Location: {{ row['Location'] }}</p>
                     <p><a href="{{ row['URL'] }}">MountainProject Page</a></p>
                 </div>
@@ -41,10 +41,10 @@
                 <div class="record">
                     <hr class="dashed">
                     <p class="route-name">{{ row['RouteName'] }}</p>
+                    <p>Rock Type: {{ row['MainGeology'] }}</p>
                     <p>RouteType: {{ row['RouteType'] }}</p>
                     <p>Quality: {{ row['AVG_STARS'] }}</p>
-                    <p>Difficulty_Rating: {{ row['Difficulty_Rating'] }}</p>
-                    <p>Rock Type: {{ row['MainGeology'] }}</p>
+                    <p>Difficulty: {{ row['Difficulty_Rating'] }}</p>
                     <p><a href="{{ row['URL'] }}">MountainProject Page</a></p>
                 </div>
             {% endfor %}       
@@ -54,11 +54,11 @@
             <div class="record">
                 <hr class="dashed">
                 <p class="route-name">RouteName: {{ row['RouteName'] }}</p>
-                <p>RouteType: {{ row['RouteType'] }}</p>
-                <p>AVG_STARS: {{ row['AVG_STARS'] }}</p>
-                <p>Difficulty_Rating: {{ row['Difficulty_Rating'] }}</p>
+                <p>Region: {{ row['Region'] }}</p>
+                <p>Quality: {{ row['AVG_STARS'] }}</p>
+                <p>Difficulty: {{ row['Difficulty_Rating'] }}</p>
                 <p>Location: {{ row['Location'] }}</p>
-                <p>URL: <a href="{{ row['URL'] }}">{{ row['URL'] }}</a></p>
+                <p>URL: <a href="{{ row['URL'] }}">MountainProject Page</a></p>
             </div>
             </div>
             {% endfor %}  
@@ -75,11 +75,11 @@
                 <div class="record">
                     <hr class="dashed">
                     <p class="route-name">RouteName: {{ row['RouteName'] }}</p>
-                    <p>Difficulty_Rating: {{ row['Difficulty_Rating'] }}</p>
+                    <p>Difficulty: {{ row['Difficulty_Rating'] }}</p>
                     <p>Region: {{ row['Region'] }}</p>
-                    <p>AVG_STARS: {{ row['AVG_STARS'] }}</p>
+                    <p>Quality: {{ row['AVG_STARS'] }}</p>
                     <p>Location: {{ row['Location'] }}</p>
-                    <p>URL: <a href="{{ row['URL'] }}">{{ row['URL'] }}</a></p>
+                    <p>URL: <a href="{{ row['URL'] }}">MountainProject Page</a></p>
                 </div>
                 </div>
             {% endfor %} 
@@ -94,7 +94,7 @@
                 <p>Latitude: {{ row['Latitude'] }}</p>
                 <p>Location: {{ row['Location'] }}</p>
                 <p>Longitude: {{ row['Longitude'] }}</p>
-                <p>URL: <a href="{{ row['URL'] }}">{{ row['URL'] }}</a></p>
+                <p>URL: <a href="{{ row['URL'] }}">MountainProject Page</a></p>
             </div>
             {% endfor %}
         {% endif %}
