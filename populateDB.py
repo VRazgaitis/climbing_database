@@ -1,7 +1,6 @@
 import csv
 import sqlite3
 from util import data_helpers
-import uuid
 
 def convert_YDS_to_int(yds_grade):
     """
