@@ -1,101 +1,101 @@
 {% extends 'layout.html' %}
 
-{% block body %} 
-    <h1> Query Results </h1>      
+{% block body %}
     <div class="query">
-         
-        {% if type == 'query1' %} 
-            {% for row in rows %}
-                <p>
-                    {{ row['RouteName'], row['Difficulty_Rating']}}
-                </p>
-            {% endfor %}  
-        {% elif type == 'query2' %} 
-            {% for row in rows %}
-                <p>
-                    {{ row['AVG_STARS'], row['URL'] }}
-                </p>
-            {% endfor %}       
-        {% elif type == 'query3' %} 
-            {% for row in rows %}
-            <div class="record-container">
-                <div class="record">
-                    <hr class="dashed">
-                    <p class="route-name">{{ row['RouteName'] }}</p>
-                    <p>RouteType: {{ row['RouteType'] }}</p>
-                    <p>AVG_STARS: {{ row['AVG_STARS'] }}</p>
-                    <p>Difficulty_Rating: {{ row['Difficulty_Rating'] }}</p>
-                    <p>Location: {{ row['Location'] }}</p>
-                    <p><a href="{{ row['URL'] }}">MountainProject Page</a></p>
-                </div>
-            </div>
-            {% endfor %} 
-        {% elif type == 'query4' %} 
-            {% for row in rows %}
-            <div class="record">
-                <p>{{ row['ClimberName'] }}</p>
-            </div>
-        {% endfor %}  
-        {% elif type == 'query5' %} 
-            {% for row in rows %}
-                <div class="record">
-                    <hr class="dashed">
-                    <p class="route-name">{{ row['RouteName'] }}</p>
-                    <p>RouteType: {{ row['RouteType'] }}</p>
-                    <p>Quality: {{ row['AVG_STARS'] }}</p>
-                    <p>Difficulty_Rating: {{ row['Difficulty_Rating'] }}</p>
-                    <p>Rock Type: {{ row['MainGeology'] }}</p>
-                    <p><a href="{{ row['URL'] }}">MountainProject Page</a></p>
-                </div>
-            {% endfor %}       
-        {% elif type == 'query6' %} 
-            {% for row in rows %}
-            <div class="record-container"></div>
-            <div class="record">
-                <hr class="dashed">
-                <p class="route-name">RouteName: {{ row['RouteName'] }}</p>
-                <p>RouteType: {{ row['RouteType'] }}</p>
-                <p>AVG_STARS: {{ row['AVG_STARS'] }}</p>
-                <p>Difficulty_Rating: {{ row['Difficulty_Rating'] }}</p>
-                <p>Location: {{ row['Location'] }}</p>
-                <p>URL: <a href="{{ row['URL'] }}">{{ row['URL'] }}</a></p>
-            </div>
-            </div>
-            {% endfor %}  
 
-        {% elif type == 'query7' %} 
+        {% if type == 'query1' %}
             {% for row in rows %}
-                <p>
-                    ...
-                </p>
-            {% endfor %}  
-        {% elif type == 'query8' %} 
+                <div class="record card">
+                    <p><strong>Route Name:</strong> {{ row['RouteName'] }}</p>
+                    <p><strong>Difficulty_Rating:</strong> {{ row['Difficulty_Rating'] }}</p>
+                </div>
+            {% endfor %}
+
+        {% elif type == 'query2' %}
             {% for row in rows %}
-            <div class="record-container"></div>
-                <div class="record">
+                <div class="record card">
+                    <p><strong>AVG_STARS:</strong> {{ row['AVG_STARS'] }}</p>
+                    <p><a href="{{ row['URL'] }}">MountainProject Page</a></p>
+                </div>
+            {% endfor %}
+
+        {% elif type == 'query3' %}
+            {% for row in rows %}
+                <div class="record card">
                     <hr class="dashed">
-                    <p class="route-name">RouteName: {{ row['RouteName'] }}</p>
-                    <p>Difficulty_Rating: {{ row['Difficulty_Rating'] }}</p>
-                    <p>Region: {{ row['Region'] }}</p>
-                    <p>AVG_STARS: {{ row['AVG_STARS'] }}</p>
-                    <p>Location: {{ row['Location'] }}</p>
-                    <p>URL: <a href="{{ row['URL'] }}">{{ row['URL'] }}</a></p>
+                    <p><strong>Route Name:</strong> {{ row['RouteName'] }}</p>
+                    <p><strong>Route Type:</strong> {{ row['RouteType'] }}</p>
+                    <p><strong>AVG_STARS:</strong> {{ row['AVG_STARS'] }}</p>
+                    <p><strong>Difficulty_Rating:</strong> {{ row['Difficulty_Rating'] }}</p>
+                    <p><strong>Geo Location:</strong> {{ row['Location'] }}</p>
+                    <p><a href="{{ row['URL'] }}">MountainProject Page</a></p>
                 </div>
-                </div>
-            {% endfor %} 
-        {% elif type.isdecimal %} 
+            {% endfor %}
+
+        {% elif type == 'query4' %}
             {% for row in rows %}
-            <div class="record">
-                <hr class="dashed">
-                <p>RouteName: {{ row['RouteName'] }}</p>
-                <p>RouteType: {{ row['RouteType'] }}</p>
-                <p>AVG_STARS: {{ row['AVG_STARS'] }}</p>
-                <p>Difficulty_Rating: {{ row['Difficulty_Rating'] }}</p>
-                <p>Latitude: {{ row['Latitude'] }}</p>
-                <p>Location: {{ row['Location'] }}</p>
-                <p>Longitude: {{ row['Longitude'] }}</p>
-                <p>URL: <a href="{{ row['URL'] }}">{{ row['URL'] }}</a></p>
-            </div>
+                <div class="record card">
+                    <p><strong>Climber Name:</strong> {{ row['ClimberName'] }}</p>
+                </div>
+            {% endfor %}
+
+        {% elif type == 'query5' %}
+            {% for row in rows %}
+                <div class="record card">
+                    <hr class="dashed">
+                    <p><strong>Route Name:</strong> {{ row['RouteName'] }}</p>
+                    <p><strong>Route Type:</strong> {{ row['RouteType'] }}</p>
+                    <p><strong>AVG_STARS:</strong> {{ row['AVG_STARS'] }}</p>
+                    <p><strong>Difficulty_Rating:</strong> {{ row['Difficulty_Rating'] }}</p>
+                    <p><strong>Rock Type:</strong> {{ row['MainGeology'] }}</p>
+                    <p><a href="{{ row['URL'] }}">MountainProject Page</a></p>
+                </div>
+            {% endfor %}
+
+        {% elif type == 'query6' %}
+            {% for row in rows %}
+                <div class="record card">
+                    <hr class="dashed">
+                    <p><strong>Route Name:</strong> {{ row['RouteName'] }}</p>
+                    <p><strong>Route Type:</strong> {{ row['RouteType'] }}</p>
+                    <p><strong>AVG_STARS:</strong> {{ row['AVG_STARS'] }}</p>
+                    <p><strong>Difficulty_Rating:</strong> {{ row['Difficulty_Rating'] }}</p>
+                    <p><strong>Location:</strong> {{ row['Location'] }}</p>
+                    <p>URL: <a href="{{ row['URL'] }}">MountainProject Page</a></p>
+                </div>
+            {% endfor %}
+
+        {% elif type == 'query7' %}
+            {% for row in rows %}
+                <div class="record card">
+                    <p>...</p>
+                </div>
+            {% endfor %}
+
+        {% elif type == 'query8' %}
+            {% for row in rows %}
+                <div class="record card">
+                    <hr class="dashed">
+                    <p><strong>Route Name:</strong> {{ row['RouteName'] }}</p>
+                    <p><strong>Route Type:</strong> {{ row['RouteType'] }}</p>
+                    <p><strong>Region:</strong> {{ row['Region'] }}</p>
+                    <p><strong>AVG_STARS:</strong> {{ row['AVG_STARS'] }}</p>
+                    <p><strong>Difficulty_Rating:</strong> {{ row['Difficulty_Rating'] }}</p>
+                    <p><strong>Geo Location:</strong> {{ row['Latitude'] }} : {{ row['Longitude'] }}</p>
+                    <p>URL: <a href="{{ row['URL'] }}">MountainProject Page</a></p>
+                </div>
+            {% endfor %}
+
+        {% elif type.isdecimal %}
+            {% for row in rows %}
+                <div class="record card">
+                    <hr class="dashed">
+                    <p><strong>Route Name:</strong> {{ row['RouteName'] }}</p>
+                    <p><strong>Route Type:</strong> {{ row['RouteType'] }}</p>
+                    <p><strong>AVG_STARS:</strong> {{ row['AVG_STARS'] }}</p>
+                    <p><strong>Geo Location:</strong> {{ row['Latitude'] }} : {{ row['Longitude'] }}</p>
+                    <p><a href="{{ row['URL'] }}">MountainProject Page</a></p>
+                </div>
             {% endfor %}
         {% endif %}
     </div>
