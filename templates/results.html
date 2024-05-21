@@ -21,15 +21,22 @@
 
         {% elif type == 'query3' %}
             {% for row in rows %}
-                <div class="record card">
-                    <hr class="dashed">
-                    <p><strong>Route Name:</strong> {{ row['RouteName'] }}</p>
-                    <p><strong>Route Type:</strong> {{ row['RouteType'] }}</p>
-                    <p><strong>AVG_STARS:</strong> {{ row['AVG_STARS'] }}</p>
-                    <p><strong>Difficulty_Rating:</strong> {{ row['Difficulty_Rating'] }}</p>
-                    <p><strong>Geo Location:</strong> {{ row['Location'] }}</p>
-                    <p><a href="{{ row['MP_URL'] }}">MountainProject Page</a></p>
+            <div class="record card flip-card">
+                <hr class="dashed">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="{{ row['img_URL'] }}" style='height:200px; width:200px;'>
+                    </div>
+                    <div class="flip-card-back">
+                        <p><strong>Route Name:</strong> {{ row['RouteName'] }}</p>
+                        <p><strong>Route Type:</strong> {{ row['RouteType'] }}</p>
+                        <p><strong>AVG_STARS:</strong> {{ row['AVG_STARS'] }}</p>
+                        <p><strong>Difficulty_Rating:</strong> {{ row['Difficulty_Rating'] }}</p>
+                        <p><strong>Geo Location:</strong> {{ row['Location'] }}</p>
+                        <p><a href="{{ row['MP_URL'] }}">MountainProject Page</a></p>
+                    </div>
                 </div>
+            </div>        
             {% endfor %}
 
         {% elif type == 'query4' %}
@@ -41,16 +48,23 @@
 
         {% elif type == 'query5' %}
             {% for row in rows %}
-                <div class="record card">
+                <div class="record card flip-card">
                     <hr class="dashed">
-                    <p><strong>Route Name:</strong> {{ row['RouteName'] }}</p>
-                    <p><strong>Route Type:</strong> {{ row['RouteType'] }}</p>
-                    <p><strong>AVG_STARS:</strong> {{ row['AVG_STARS'] }}</p>
-                    <p><strong>Difficulty_Rating:</strong> {{ row['Difficulty_Rating'] }}</p>
-                    <p><strong>Rock Type:</strong> {{ row['MainGeology'] }}</p>
-                    <p><a href="{{ row['MP_URL'] }}">MountainProject Page</a></p>
-                    <!-- <p><img src="{{ row['img_URL'] }}"></p> -->
-                </div>
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="{{ row['img_URL'] }}" style='height:200px; width:200px;'>
+                        </div>
+                        <div class="flip-card-back">
+                            <p><strong>Route Name:</strong> {{ row['RouteName'] }}</p>
+                            <p><strong>Route Type:</strong> {{ row['RouteType'] }}</p>
+                            <p><strong>AVG_STARS:</strong> {{ row['AVG_STARS'] }}</p>
+                            <p><strong>Difficulty_Rating:</strong> {{ row['Difficulty_Rating'] }}</p>
+                            <p><strong>Rock Type:</strong> {{ row['MainGeology'] }}</p>
+                            <p><a href="{{ row['MP_URL'] }}">MountainProject Page</a></p>
+                        </div>
+ 
+                    </div>
+                </div>        
             {% endfor %}
 
         {% elif type == 'query6' %}
