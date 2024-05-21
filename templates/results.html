@@ -19,6 +19,7 @@
         {% elif type == 'query3' %} 
             {% for row in rows %}
                 <div class="record">
+                    <hr class="dashed">
                     <p>RouteName: {{ row['RouteName'] }}</p>
                     <p>RouteType: {{ row['RouteType'] }}</p>
                     <p>AVG_STARS: {{ row['AVG_STARS'] }}</p>
@@ -68,6 +69,7 @@
         {% elif type.isdecimal %} 
             {% for row in rows %}
             <div class="record">
+                <hr class="dashed">
                 <p>RouteName: {{ row['RouteName'] }}</p>
                 <p>RouteType: {{ row['RouteType'] }}</p>
                 <p>AVG_STARS: {{ row['AVG_STARS'] }}</p>

@@ -1,11 +1,12 @@
 {% extends 'layout.html' %}
 
 {% block body %}
-    <h1>This is the relations page.</h1>
     <div class="records">
         {% if type == 'Routes' %}
+        <h1>Routes</h1>
         {% for row in rows %}
         <div class="record">
+            <hr class="dashed">
             <p>RouteName: {{ row['RouteName'] }}</p>
             <p>RouteType: {{ row['RouteType'] }}</p>
             <p>AVG_STARS: {{ row['AVG_STARS'] }}</p>
@@ -14,15 +15,29 @@
             <p>Location: {{ row['Location'] }}</p>
             <p>Longitude: {{ row['Longitude'] }}</p>
             <p>URL: <a href="{{ row['URL'] }}">{{ row['URL'] }}</a></p>
+            <p></p>
         </div>
         {% endfor %}
-        {% elif type == 'Developer' %}
-        <p>Developer Information</p>
-        {% elif type == 'Equipment' %}
-        <p>Equipment Information</p>
-        {% elif type == 'Region' %}
-        <p>Region Information</p>
-        {% elif type == 'Climber' %}
+        {% elif type == 'Regions' %}
+        <h1>Regions</h1>
+        {% for row in rows %}
+        <div class="record">
+            <hr class="dashed">
+            <p>Region: {{ row['Region'] }}</p>
+            <p>Country: {{ row['Country'] }}</p>
+            <p>Continent: {{ row['Continent'] }}</p>
+        </div>
+        {% endfor %}
+        {% elif type == 'Climbers' %}
+        <h1>Climbers</h1>
+        {% for row in rows %}
+        <div class="record">
+            <hr class="dashed">
+            <p>Name: {{ row['ClimberName'] }}</p>
+            <p>Date of Birth: {{ row['DOB'] }}</p>
+            <p></p>
+        </div>
+        {% endfor %}
         <p>Climber Information</p>
         {% endif %}
     </div>
