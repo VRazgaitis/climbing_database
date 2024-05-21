@@ -2,7 +2,6 @@
 
 {% block body %}
 <div class="container">
-    <h1>Rock Climbing Database Query</h1>
     <div class="relation-container">
         {% for relation in ['Routes', 'Regions', 'Climbers'] %}
         <form action="{{ url_for('relation', table_name=relation) }}" method="GET">
@@ -12,45 +11,46 @@
     </div>
 
     <!-- TODO: Implement a GUI that allows for User Input -->
-
-    <form action="{{ url_for('submit_ratings_query') }}" method="POST">
-        <label for="querySelect">List of routes with rating</label>
-        <select name="queryRelation" id="queryRelation">
-            <option value=">">Above</option>
-            <option value="=">Equal to</option>
-            <option value="&lt;">Below</option>
-        </select>
-        <select name="queryDecimal" id="queryDecimal">
-            <option value="3.0">3.0</option>
-            <option value="3.2">3.2</option>
-            <option value="3.4">3.4</option>
-            <option value="3.6">3.6</option>
-            <option value="3.8">3.8</option>
-        </select>
-        <button type="submit">Submit Query</button>
-    </form>
-
-    <form action="{{ url_for('submit_query') }}" method="POST">
-        <label for="querySelect">Choose a query:</label>
-        <select name="queryType" id="querySelect">
-            <!-- Completed queries in app.py: -->
-            <option value="query1">Which routes, by name and difficulty rating, are under 5.11 difficulty rating</option>
-            <option value="query2">Routes, by average stars and URL, which require a climbing helmet </option>
-            <option value="query3">What are the 3 highest rated Granite routes in North America</option> 
-            <option value="query4">Which climber by name has climbed the most difficult route in the United States? </option>
-            <option value="query5">Listed by main geology and average stars, what are the top 5 rated routes on Sandstone (any type)?</option> 
-            <option value="query6">What is the highest rated 5.10 (any subdifficulty) climb in each region? </option>
-            <option value="query8">What 5.10 climbs can I work through in increasing difficulty a the "Chocolate Factory" area at the Red River Gorge?</option> 
-
-            <!-- Queries ready to be written: -->
-            <!-- FYI rock types come from Common_geologies schema -->
-            <option value="query7">Give me a list climbers who have climbed in the Red River Gorge in the last two years, sorted by age descending</option>
-           
-        </select>
-        <button type="submit">Submit Query</button>
-    </form>
-
-</div>
-
+    <div class="grid-container">
+        <form action="{{ url_for('submit_ratings_query') }}" method="POST" id="custom-query">
+            <label for="querySelect">List of routes with rating</label>
+            <select name="queryRelation" id="queryRelation">
+                <option value=">">Above</option>
+                <option value="=">Equal to</option>
+                <option value="&lt;">Below</option>
+            </select>
+            <select name="queryDecimal" id="queryDecimal">
+                <option value="3.0">3.0</option>
+                <option value="3.2">3.2</option>
+                <option value="3.4">3.4</option>
+                <option value="3.6">3.6</option>
+                <option value="3.8">3.8</option>
+            </select>
+            <button type="submit">Submit Query</button>
+        </form>
+    
+        <form action="{{ url_for('submit_query') }}" method="POST" id="select-query">
+            <label for="querySelect">Choose a complex query:</label>
+            <select name="queryType" id="querySelect">
+                <!-- Completed queries in app.py: -->
+                <option value="query1">Which routes, by name and difficulty rating, are under 5.11 difficulty rating?
+                </option>
+                <option value="query2">Routes, by average stars and URL, which require a climbing helmet </option>
+                <option value="query3">What are the 3 highest rated Granite climbs in North America?</option>
+                <option value="query4">Which climber by name has climbed the most difficult route in the United States?
+                </option>
+                <option value="query5">What are the top 5 climbs by rating on Sandstone (any type)?</option>
+                <option value="query6">What is the highest rated 5.10 (any subdifficulty) climb in each region? </option>
+                <option value="query8">What are the 5.10 climbs at the 'Chocolate Factory' area in the Red River Gorge, ordered by increasing difficulty?</option>
+                <option value="query7">List climbers who have climbed in the Red River Gorge in the last two years, sorted by descending age.</option>
+    
+            </select>
+            <button type="submit">Submit Complex Query</button>
+        </form>
+    
+    </div>
+    
+    </div>
+   
 <script src="{{ url_for('static', filename='scripts.js') }}"></script>
 {% endblock %}
