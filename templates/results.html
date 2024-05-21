@@ -32,13 +32,13 @@
         {% elif type == 'query4' %} 
             {% for row in rows %}
             <div class="record">
-                <p>Name: {{ row['ClimberName'] }}</p>
+                <p>{{ row['ClimberName'] }}</p>
             </div>
         {% endfor %}  
         {% elif type == 'query5' %} 
             {% for row in rows %}
                 <p>
-                    ...
+                    <p>{{ row['MainGeology'], row['AVG_STARS'] }}</p>
                 </p>
             {% endfor %}       
         {% elif type == 'query6' %} 
