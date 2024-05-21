@@ -91,7 +91,7 @@ def submit_query():
                             FROM "Ticks" T JOIN Routes R ON R.RouteName = T.RouteName
                             ORDER BY Difficulty desc LIMIT 1''')
         case 'query5':
-            rows = query_db('''SELECT G."MainGeology", R."AVG_STARS" 
+            rows = query_db('''SELECT * 
                             FROM "Routes" R JOIN "Common_geologies" G ON G."Region" = R."Region" 
                             WHERE G."MainGeology" LIKE "Sandstone" 
                             ORDER BY Location desc LIMIT 5''')
