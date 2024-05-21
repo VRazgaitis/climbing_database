@@ -43,36 +43,37 @@ body {
     border-radius: 10px;
     color: var(--white);
     border: 0;
-    transition: color 1s ease-in-out, box-shadow 1s ease-in-out;
 }
 
 button:hover {
     color: var(--orchid-pink);
-    box-shadow: 2px 2px 5px var(--orchid-pink);
+    box-shadow: 0px 0px 5px var(--orchid-pink);
 }
 
 .grid-container {
     display: grid;
     height: 100%;
     grid-template-columns: 1fr 2fr;
-    margin-top: 20px;
+    align-items: center;
+    margin-top: 50px;
 }
 
-#custom-query, #select-query {
+#custom-query {
     border: 1px solid var(--charocal);
     width: fit-content;
+    height: fit-content;
     margin: 20px auto;
     border-radius: 10px;
     background-color: var(--white);
-    padding: 20px;
+    padding: 30px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     color: var(--white);
 }
 
-#custom-query label, #select-query label {
+#custom-query label {
     display: block;
-    margin-bottom: 10px;
     font-size: 16px;
+    margin-bottom: 20px;
     color: var(--charocal);
 }
 
@@ -85,7 +86,7 @@ button:hover {
     background-color: var(--cadet-gray);
     color: var(--charocal);
 }
-#custom-query button, #select-query button {
+#custom-query button {
     width: 100%;
     padding: 10px;
     background-color: var(--rose-taupe);
@@ -100,4 +101,93 @@ button:hover {
 #custom-query button:hover {
     background-color: var(--orchid-pink);
     box-shadow: 2px 2px 5px var(--orchid-pink);
+}
+
+#select-query {
+    border: 1px solid var(--charcoal);
+    width: fit-content;
+    margin: 20px auto;
+    border-radius: 10px;
+    background-color: var(--white);
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    color: var(--charcoal);
+}
+
+#select-query label {
+    display: block;
+    font-size: 16px;
+    color: var(--charcoal);
+}
+
+#select-query .radio-option {
+    display: flex;
+    align-items: center;
+    margin: 20px;
+}
+
+#select-query .radio-option label {
+    margin-left: 10px;
+}
+
+#select-query button {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--rose-taupe);
+    color: var(--white);
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+#select-query button:hover {
+    background-color: var(--orchid-pink);
+    box-shadow: 2px 2px 5px var(--orchid-pink);
+}
+
+.records {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin: 20px auto;
+}
+
+.card {
+    border: 1px solid var(--charcoal);
+    border-radius: 10px;
+    background-color: var(--white);
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    color: var(--charcoal);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    background-color: var(--orchid-pink);
+}
+
+.card hr.dashed {
+    border: none;
+    border-top: 2px dashed var(--charcoal);
+    margin: 10px 0;
+}
+
+.card p {
+    margin: 10px 0;
+}
+
+.card a {
+    color: var(--rose-taupe);
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+.card a:hover {
+    color: var(--white);
 }
