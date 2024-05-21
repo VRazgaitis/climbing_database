@@ -99,6 +99,13 @@ def submit_query():
             rows = query_db('''SELECT URL, RouteName, Difficulty_Rating, Region, MAX("AVG_STARS") AS HighestRating
                                FROM Routes WHERE "Difficulty_Rating" LIKE '5.10a%'
                                GROUP BY Region''')
+        case 'query6':
+            rows = query_db('''SELECT DISTINCT FROM "Ticks" T 
+                            JOIN Routes R ON T."RouteName"=R."RouteName" 
+                            JOIN Climbers C ON C."ClimberName"=T."ClimberName" 
+                            WHERE Location LIKE '%Red River Gorge%' 
+                                AND T."ClimbDate" >= DATE('now', '-2 years') 
+                            ORDER BY "DOB" ASC''')
         case 'query8':
             rows = query_db('''SELECT * FROM "Routes" 
                             WHERE "Location" LIKE 'Red River Gorge' 
