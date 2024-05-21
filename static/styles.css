@@ -1,10 +1,103 @@
-/* TODO: Implement Styles for the Page */
+:root {
+    --charocal: #424B54;
+    --cadet-gray: #93A8AC;
+    --orchid-pink: #E2B4BD;
+    --rose-taupe: #9B6A6C;
+    --white: #FFFFFF;
+}
 
-/* index.html styles */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
 
-/* custom.html styles */
+body {
+    background-color: var(--cadet-gray);
+}
 
-/* relation.html styles */
+.header {
+    text-align: center;
+    background-color: var(--charocal);
+    color: var(--white);
+    font-size: 24px;
+    padding: 16px;
+}
 
-/* results.html styles */
+.header p {
+    font-family: cursive;
+}
 
+.relation-container {
+    display: flex;
+    justify-content: space-around;
+    margin: 15px;
+}
+
+.relation-container button {
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 20px;
+    box-shadow: 0px 0px 0px transparent;
+    background-color: var(--rose-taupe);
+    border-radius: 10px;
+    color: var(--white);
+    border: 0;
+    transition: color 1s ease-in-out, box-shadow 1s ease-in-out;
+}
+
+button:hover {
+    color: var(--orchid-pink);
+    box-shadow: 2px 2px 5px var(--orchid-pink);
+}
+
+.grid-container {
+    display: grid;
+    height: 100%;
+    grid-template-columns: 1fr 2fr;
+    margin-top: 20px;
+}
+
+#custom-query, #select-query {
+    border: 1px solid var(--charocal);
+    width: fit-content;
+    margin: 20px auto;
+    border-radius: 10px;
+    background-color: var(--white);
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    color: var(--white);
+}
+
+#custom-query label, #select-query label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: var(--charocal);
+}
+
+#custom-query select, #select-query select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid var(--charocal);
+    border-radius: 5px;
+    background-color: var(--cadet-gray);
+    color: var(--charocal);
+}
+#custom-query button, #select-query button {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--rose-taupe);
+    color: var(--white);
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+#custom-query button:hover {
+    background-color: var(--orchid-pink);
+    box-shadow: 2px 2px 5px var(--orchid-pink);
+}
