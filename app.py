@@ -97,7 +97,7 @@ def submit_query():
                             ORDER BY Location desc LIMIT 5''')
         case 'query6':
             rows = query_db('''SELECT URL, RouteName, Difficulty_Rating, Region, MAX("AVG_STARS") AS HighestRating
-                               FROM Routes WHERE "Difficulty_Rating" LIKE '5.10a'
+                               FROM Routes WHERE "Difficulty_Rating" LIKE '5.10a%'
                                GROUP BY Region''')
         case 'query8':
             rows = query_db('''SELECT * FROM "Routes" 
