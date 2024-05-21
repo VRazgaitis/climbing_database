@@ -69,7 +69,6 @@ def submit_query():
     '''
     query_type = request.form['queryType']
     print(query_type)
-    # TODO: Implement the query logic based on query_type
     
     match query_type:
         case 'query1':
