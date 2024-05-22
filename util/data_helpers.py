@@ -1,6 +1,5 @@
 # This script contains utility functions for cleaning csv data 
 # Filepaths are relative to main project folder
-# By VR
 
 import csv 
 import os

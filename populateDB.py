@@ -1,6 +1,7 @@
 import csv
 import sqlite3
 from util import data_helpers, web_scraping
+import os, time
 
 def convert_YDS_to_int(yds_grade):
     """
@@ -98,6 +99,12 @@ def convert_YDS_to_int(yds_grade):
     }
     return climbing_grades[yds_grade]
 
+def count_csv_rows(file_path):
+    """Returns the number of rows in a csv file"""
+    with open(file_path, 'r') as file:
+        row_count = sum(1 for row in file) - 1  # Subtract 1 for the header row
+    return row_count
+
 def process_csv_routes(path):
     """
     Processes route entries into the DB
@@ -110,6 +117,9 @@ def process_csv_routes(path):
         '''
         with open(path, 'r') as file:
             routeDictionary = csv.DictReader(file)
+            climbing_area=strip_to_area(path)
+            file_row_count=count_csv_rows(path)
+            rows_processed=0
             for row in routeDictionary:
                 cursor.execute(insert_query, 
                                 (row['Route'], 
@@ -122,7 +132,20 @@ def process_csv_routes(path):
                                 row['Rating'].split()[0], # clean out extra chars for danger tags
                                 convert_YDS_to_int(row['Rating'].split()[0]),
                                 float(row['Area Latitude']),
-                                float(row['Area Longitude'])))  
+                                float(row['Area Longitude']))) 
+                rows_processed+=1
+                os.system('clear')
+                print(f'{climbing_area} routes processed: [{rows_processed}/{file_row_count}]') 
+
+def strip_to_area(path):
+    """
+    Takes a filepath to a csv of routes and returns the name
+    Example: (Data/Routes/gunks_routes.csv -> gunks)
+    """
+    route_csv=path.split("/")[-1]
+    name_list=route_csv.split(".")
+    climb_area=name_list[0].split("_")[:-1]
+    return ' '.join(climb_area)
                 
 def process_csv_climbers(path):
     """
@@ -259,4 +282,3 @@ def write_ticks():
         filepath = 'Data/ticklists/'+ticklist
         climber_name = ' '.join(ticklist.split('_')[:2]).title()
         process_csv_ticklist(climber_name, filepath)
-
