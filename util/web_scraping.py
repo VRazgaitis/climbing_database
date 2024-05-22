@@ -26,8 +26,7 @@ def get_route_url(routename):
     WHERE RouteName= ? 
     '''
     cur.execute(query, (routename,))
-    # route_url = cur.fetchall()[0][0]
-    route_url = cur.fetchall()
+    route_url = cur.fetchall()[0][0]
     print(route_url)
     conn.close()
     return route_url
@@ -66,5 +65,5 @@ def scrape_MP_route_img(route_url):
 if __name__ == "__main__":
     ### EXAMPLE USAGE ###
     mp_route_url = get_route_url("Coffindaffer's Dream")
-    # route_img_urls = scrape_MP_route_img(mp_route_url)
-    # webbrowser.open(route_img_urls[0])  # variable number of img url's depending on the MP page
+    route_img_urls = scrape_MP_route_img(mp_route_url)
+    webbrowser.open(route_img_urls[0])  # variable number of img url's depending on the MP page
