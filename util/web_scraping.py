@@ -27,13 +27,14 @@ def get_route_url(routename):
     '''
     cur.execute(query, (routename,))
     route_url = cur.fetchall()[0][0]
-    print(route_url)
+    # print(route_url)
     conn.close()
     return route_url
 
 def scrape_MP_route_img(route_url):
     """
-    Given a Mountain Project (MP) climbing route URL, returns a URL of an image of the climbing route.
+    Given a Mountain Project (MP) climbing route URL, scrapes the images carousel
+    and returns a list of all but the first image
     
     Args:
     - route_url (string): A URL of a climbing route page on MP
@@ -62,8 +63,59 @@ def scrape_MP_route_img(route_url):
         route_image_urls.append('https://cdn.climbing.com/wp-content/uploads/2016/03/burr102411-024jpg-1024x683.jpg?width=1200')
     return route_image_urls
 
+def populate_imgs_list(route_url):
+    """
+    Given a Mountain Project (MP) climbing route URL, returns a list of URL's of all images of the 
+    climbing route on the MP page.
+    
+    Args:
+    - route_url (string): A URL of a climbing route page on MP
+
+    Returns:
+    - list of strings: URL's to images of the climbing route
+    - None: if image was not found 
+    """
+    response = requests.get(route_url)
+    tree = html.fromstring(response.content)
+    div_elements = tree.xpath('//div')
+    route_image_urls = []
+    for div in div_elements:
+        # isolate photo cards 
+        if div.get('class') == 'col-xs-4 col-lg-3 card-with-photo':
+            for child in div.iterchildren():
+                if child.get('class') == 'card-with-photo photo-card':
+                    # get the URL of a MP photo page
+                    img_page_url=child.get('href')
+                    img_url=scrape_img_url(img_page_url)
+                    route_image_urls.append(img_url)
+    return route_image_urls
+
+def scrape_img_url(url):
+    """
+    Given a Mountain Project (MP) photo page URL, scrapes the webpage and returns only the 
+    URL of of the image itself.
+
+    Example photo page: 
+    https://www.mountainproject.com/photo/122807545/levi-on-coffindaffers-dream-photo-by-at-crimp-scampi
+    
+    Args:
+    - url (string): A URL of a climbing route photo **page** on MP
+
+    Returns:
+    - url (string): A URL of a climbing route **photo**
+    """
+    response = requests.get(url)
+    tree = html.fromstring(response.content)
+    div_elements = tree.xpath('//div')
+    for div in div_elements:
+        if div.get('class') == 'expand text-xs-center':
+            for child in div.iterchildren():
+                img_link=child.get('href')
+                return img_link
+
 if __name__ == "__main__":
     ### EXAMPLE USAGE ###
-    mp_route_url = get_route_url("Coffindaffer's Dream")
-    route_img_urls = scrape_MP_route_img(mp_route_url)
-    webbrowser.open(route_img_urls[0])  # variable number of img url's depending on the MP page
+    mp_route_url = get_route_url("A Brief History of Climb")
+    img_urls = populate_imgs_list(mp_route_url)
+    for url in img_urls[:3]:
+        webbrowser.open(url)
